@@ -1,5 +1,13 @@
 # PROYECTO_UNIDAD_5
 Repositorio asociado al proyecto de la unidad 5
+Consultas SQL realizadas sobre la base de datos Shakila.
+
+
+## Contenido
+
+- Consultas de lógica SQL.
+- Resolución de ejercicios de la unidad 5.
+
 
 ## Requisitos de la entrega
 
