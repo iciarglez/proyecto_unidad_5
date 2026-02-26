@@ -25,3 +25,8 @@ Esto nos permitirá ver las columnas de cada tabla y el tipo de dato.
 Las soluciones están en el fichero PROYECTO_5_shakila_LogicaConsultasSQL.sql
 Cada ejercicio contiene el enunciado, la resolución y anotaciones relacionadas con la resolución.
 
+
+
+## Correcciones
+
+- Se han corregido consultas SQL, concretamente los ejercicios 52 y 58.
