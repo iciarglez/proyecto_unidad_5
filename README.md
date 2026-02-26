@@ -1,5 +1,6 @@
 # PROYECTO_UNIDAD_5
-Repositorio asociado al proyecto de la unidad 5
+Repositorio asociado al proyecto de la unidad 5.
+
 Consultas SQL realizadas sobre la base de datos Shakila.
 
 
