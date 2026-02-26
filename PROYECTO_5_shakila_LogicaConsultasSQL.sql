@@ -534,23 +534,16 @@ create temporary table peliculas_alquiladas as (
 select f.film_id, f.title, count(r.rental_id) as total_alquilada
 from film f
 left join inventory i on f.film_id = i.film_id
-left join rental r on i.inventory_id = r.rental_id
+left join rental r on i.inventory_id = r.inventory_id -- corrección, el vínculo es con r.inventory_id en lugar de r.rental_id
 group by f.film_id, f.title
 having count(r.rental_id) > 10
 );
 
-select * from peliculas_alquiladas;
-
-/*Al hacer esta consulta nos sale vacío. Comprobamos que no es un error de código
- Vemos en la consulta a continuación, sin poner la limitación de 10, que el máximo de alquileres de una película es 8, luego al pedir que sea > 10, no tenemos ninguna.
- Nuestra tabla temporal es correcta.*/
-
-select f.film_id, f.title, count(r.rental_id) as total_alquilada
-from film f
-left join inventory i on f.film_id = i.film_id
-left join rental r on i.inventory_id = r.rental_id
-group by f.film_id, f.title
+select * from peliculas_alquiladas
 order by total_alquilada desc;
+
+/*Estaba mal el cruce entre las tablas inventory y rental, porque estaba relacionándolas con i.inventory_id = r.rental_id por error.
+ * Corregido!*/
 
 
 -- 53. Encuentra el título de las películas que han sido alquiladas por el cliente con el nombre ‘Tammy Sanders’ y que aún no se han devuelto. Ordena los resultados alfabéticamente por título de película.
@@ -640,6 +633,20 @@ left join category c on fc.category_id = c.category_id
 where c.name = 'Animation';
 
 /* Juntamos las 3 tablas que nos interesan y filtramos por la categoría "Animation" */
+
+
+
+/*CORRECCIÓN*/
+
+
+select f.title
+from film f
+join film_category fc on f.film_id = fc.film_id
+where fc.category_id = (
+	select category_id 
+	from category
+	where name = 'Animation'
+);
 
 
 -- 59. Encuentra los nombres de las películas que tienen la misma duración que la película con el título ‘Dancing Fever’. Ordena los resultados alfabéticamente por título de película.
